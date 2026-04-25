@@ -18,46 +18,24 @@ const Index = () => (
   <div className="min-h-screen bg-background text-foreground">
     <Header />
     <Hero />
+    <ThreeColumns />
     <CategoryPills />
     <main>
-      <ThreeColumns />
-      <CategorySection
-        category="Politics"
-        description="Elections, approval ratings, legislative votes and political outcomes worldwide."
-      />
-      <CategorySection
-        category="Geopolitics"
-        description="Conflicts, ceasefires, sanctions and major diplomatic outcomes."
-      />
-      <CategorySection
-        category="Crypto"
-        description="Token prices, ETF flows, regulation and protocol-level events."
-      />
-      <CategorySection
-        category="Economy"
-        description="Central banks, inflation, growth, employment and recession risk."
-      />
-      <CategorySection
-        category="Tech"
-        description="Product launches, AI milestones, releases and tech industry outcomes."
-      />
-      <CategorySection
-        category="Sports"
-        description="Tournaments, championships and outcome markets across major sports."
-      />
-      <CategorySection
-        category="Regulation"
-        description="Court rulings, regulatory votes and policy decisions affecting markets."
-      />
-      <TopMoving />
-      <GainersLosers />
+      <CategorySection category="Politics" />
+      <CategorySection category="Geopolitics" />
+      <CategorySection category="Crypto" />
+      <CategorySection category="Economy" />
+      <CategorySection category="Tech" />
+      <CategorySection category="Sports" />
+      <ResolutionCalendar />
       <GlobalMap />
       <VenueCompare />
-      <ResolutionCalendar />
       <NewsGrid />
+      <TopMoving />
+      <GainersLosers />
       <ScreenerPreview />
-      <Guides />
       <Platforms />
+      <Guides />
     </main>
     <Footer />
   </div>
