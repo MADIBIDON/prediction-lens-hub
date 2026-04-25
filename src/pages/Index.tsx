@@ -1,25 +1,22 @@
-import { Header } from "@/components/oracle/Header";
-import { Footer } from "@/components/oracle/Footer";
-import { Hero } from "@/components/oracle/Hero";
-import { CategoryPills } from "@/components/oracle/CategoryPills";
-import { ThreeColumns } from "@/components/oracle/ThreeColumns";
-import { CategorySection } from "@/components/oracle/CategorySection";
-import { TopMoving } from "@/components/oracle/TopMoving";
-import { GainersLosers } from "@/components/oracle/GainersLosers";
-import { GlobalMap } from "@/components/oracle/GlobalMap";
-import { VenueCompare } from "@/components/oracle/VenueCompare";
-import { ResolutionCalendar } from "@/components/oracle/ResolutionCalendar";
-import { NewsGrid } from "@/components/oracle/NewsGrid";
-import { ScreenerPreview } from "@/components/oracle/ScreenerPreview";
-import { Guides } from "@/components/oracle/Guides";
-import { Platforms } from "@/components/oracle/Platforms";
+import { TopNav } from "@/components/home/TopNav";
+import { MarketsHero } from "@/components/home/MarketsHero";
+import { OverviewCards } from "@/components/home/OverviewCards";
+import { CategoryPillBar } from "@/components/home/CategoryPillBar";
+import { CategorySection } from "@/components/home/CategorySection";
+import { ResolutionCalendar } from "@/components/home/ResolutionCalendar";
+import { GlobalMap } from "@/components/home/GlobalMap";
+import { VenueComparison } from "@/components/home/VenueComparison";
+import { NewsGrid } from "@/components/home/NewsGrid";
+import { PlatformAggregation } from "@/components/home/PlatformAggregation";
+import { DocumentationGrid } from "@/components/home/DocumentationGrid";
+import { SiteFooter } from "@/components/home/SiteFooter";
 
 const Index = () => (
   <div className="min-h-screen bg-background text-foreground">
-    <Header />
-    <Hero />
-    <ThreeColumns />
-    <CategoryPills />
+    <TopNav />
+    <MarketsHero />
+    <OverviewCards />
+    <CategoryPillBar />
     <main>
       <CategorySection category="Politics" />
       <CategorySection category="Geopolitics" />
@@ -29,15 +26,12 @@ const Index = () => (
       <CategorySection category="Sports" />
       <ResolutionCalendar />
       <GlobalMap />
-      <VenueCompare />
+      <VenueComparison />
       <NewsGrid />
-      <TopMoving />
-      <GainersLosers />
-      <ScreenerPreview />
-      <Platforms />
-      <Guides />
+      <PlatformAggregation />
+      <DocumentationGrid />
     </main>
-    <Footer />
+    <SiteFooter />
   </div>
 );
 
