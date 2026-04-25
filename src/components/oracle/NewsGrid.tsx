@@ -5,7 +5,7 @@ import { SectionHeader } from "./SectionHeader";
 
 export const NewsGrid = () => (
   <section className="border-b border-border">
-    <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-6 md:py-16">
+    <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-6 md:py-16 lg:px-16 lg:py-20">
       <SectionHeader
         eyebrow="News driving markets"
         title="Every story linked to a probability move"

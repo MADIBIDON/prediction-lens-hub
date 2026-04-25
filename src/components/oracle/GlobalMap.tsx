@@ -89,7 +89,7 @@ export const GlobalMap = () => {
 
   return (
     <section id="map" className="border-b border-border bg-[hsl(var(--surface-1))]">
-      <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-6 md:py-16">
+      <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-6 md:py-16 lg:px-16 lg:py-20">
         <SectionHeader
           eyebrow="Global prediction map"
           title="Where prediction markets are happening right now"
