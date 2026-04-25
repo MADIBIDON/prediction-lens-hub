@@ -41,6 +41,15 @@ export const HOME_NEWS: HomeNewsItem[] = [
   { id: "n-22", source: "ESPN",      ago: "16 h ago",   headline: "Lakers clinch playoff berth after dominant home stretch",               category: "Sports",      relatedTitle: "Lakers make NBA playoffs",           probMove:  0.6 },
   { id: "n-23", source: "Reuters",   ago: "18 h ago",   headline: "Verstappen takes pole in Imola as Red Bull regains pace",               category: "Sports",      relatedTitle: "Verstappen wins F1 2026",            probMove: -0.8 },
   { id: "n-24", source: "ESPN",      ago: "20 h ago",   headline: "Mahomes signs supplementary deal as Chiefs reload roster",              category: "Sports",      relatedTitle: "Mahomes MVP 2026",                   probMove:  0.4 },
+  { id: "n-25", source: "Variety",   ago: "30 min ago", headline: "Awards season buzz tightens as biopic clears guild votes",              category: "Culture",     relatedTitle: "Best Picture 2026",                  probMove:  1.6 },
+  { id: "n-26", source: "Billboard", ago: "1 h ago",    headline: "Taylor Swift teases tour rehearsal footage on socials",                 category: "Culture",     relatedTitle: "Swift announces new world tour",     probMove:  2.4 },
+  { id: "n-27", source: "IGN",       ago: "3 h ago",    headline: "GTA VI second trailer cracks record viewership in 24h",                 category: "Culture",     relatedTitle: "GTA VI ships before Q4 2026",        probMove:  3.1 },
+  { id: "n-28", source: "Variety",   ago: "5 h ago",    headline: "Stranger Things finale premiere date moves up by two weeks",            category: "Culture",     relatedTitle: "Netflix top show: ST finale",        probMove:  1.1 },
+  { id: "n-29", source: "Reuters",   ago: "20 min ago", headline: "EU Commission tables enforcement timeline for high-risk AI systems",    category: "Regulation",  relatedTitle: "EU AI Act enforcement before EOY",   probMove:  2.2 },
+  { id: "n-30", source: "WSJ",       ago: "1 h ago",    headline: "SEC chair signals final crypto custody framework within months",        category: "Regulation",  relatedTitle: "SEC final crypto custody rule",      probMove: -1.1 },
+  { id: "n-31", source: "Politico",  ago: "2 h ago",    headline: "Senate banking advances stablecoin bill with bipartisan support",       category: "Regulation",  relatedTitle: "US stablecoin bill signed",          probMove:  3.3 },
+  { id: "n-32", source: "Bloomberg", ago: "4 h ago",    headline: "TikTok divestment talks resume as US deadline approaches",              category: "Regulation",  relatedTitle: "TikTok divestment or US ban",        probMove: -0.9 },
+  { id: "n-33", source: "Reuters",   ago: "6 h ago",    headline: "DOJ proposes structural remedy in Google antitrust case",               category: "Regulation",  relatedTitle: "DOJ wins Google antitrust remedy",   probMove:  1.6 },
 ];
 
 export function newsByCategory(c: HomeCategory): HomeNewsItem[] {
