@@ -1,4 +1,4 @@
-import { ChevronRight, Landmark, Globe2, Bitcoin, TrendingUp, Cpu, Trophy, Sparkles } from "lucide-react";
+import { ChevronRight, Landmark, Globe2, Bitcoin, TrendingUp, Cpu, Trophy, Sparkles, Scale } from "lucide-react";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { COMPOSITE, COMPOSITE_SERIES, TOP_CATEGORIES } from "@/data/fixtures/markets";
 import { Sparkline } from "./Sparkline";
@@ -12,6 +12,7 @@ const CATEGORY_ICON: Record<string, typeof Landmark> = {
   Tech: Cpu,
   Sports: Trophy,
   Culture: Sparkles,
+  Regulation: Scale,
 };
 
 export function MarketsHero() {

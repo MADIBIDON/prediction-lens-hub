@@ -13,8 +13,26 @@ const SOCIAL = ["X", "Li", "Yt", "Dc", "Tg"];
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-surface-1">
-      <div className="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
+    <footer className="relative overflow-hidden border-t border-border bg-surface-1">
+      {/* Atmospheric horizon — subtle blue glow at the bottom edge,
+          like a distant skyline at dusk. No cartoon, no neon. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[420px]"
+        style={{
+          background:
+            "radial-gradient(ellipse 90% 70% at 50% 130%, hsl(var(--info) / 0.22) 0%, hsl(var(--info) / 0.06) 35%, transparent 70%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 0%, hsl(var(--info) / 0.4) 50%, transparent 100%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
         {/* Top row: logo + socials */}
         <div className="mb-12 flex flex-wrap items-center justify-between gap-6">
           <Logo />
@@ -64,9 +82,10 @@ export function SiteFooter() {
           </span>
         </div>
 
-        {/* Slogan */}
-        <div className="mt-12 select-none text-center font-display text-[64px] font-semibold leading-none tracking-tight text-foreground/[0.06] sm:text-[96px]">
-          LOOK FIRST. THEN COMMIT.
+        {/* Slogan — split line, low opacity, premium */}
+        <div className="mt-16 select-none text-center font-display font-semibold leading-[0.9] tracking-tight text-foreground/[0.07]">
+          <div className="text-[56px] sm:text-[96px] lg:text-[128px]">LOOK FIRST.</div>
+          <div className="text-[56px] sm:text-[96px] lg:text-[128px]">THEN FORECAST.</div>
         </div>
       </div>
     </footer>

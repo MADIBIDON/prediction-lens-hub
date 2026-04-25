@@ -10,7 +10,9 @@ export type HomeCategory =
   | "Crypto"
   | "Economy"
   | "Tech"
-  | "Sports";
+  | "Sports"
+  | "Culture"
+  | "Regulation";
 
 export type HomeVenue = "Polymarket" | "Kalshi" | "Manifold";
 
@@ -131,8 +133,30 @@ export const SPORTS: HomeMarket[] = [
   m("spo-8", "Olympics 2028 Los Angeles host issue", "Sports", "Polymarket", 0.08, -0.2, 110_000, 208, 35, 800),
 ];
 
+export const CULTURE: HomeMarket[] = [
+  m("cul-1", "Oppenheimer-style biopic wins Best Picture 2026", "Culture", "Polymarket", 0.27, 1.6, 640_000, 221, 62, 300),
+  m("cul-2", "Taylor Swift announces new world tour by Q3", "Culture", "Polymarket", 0.48, 2.4, 920_000, 222, 71, 90),
+  m("cul-3", "Eurovision 2026 winner from Nordic country", "Culture", "Polymarket", 0.39, -0.7, 280_000, 223, 54, 30),
+  m("cul-4", "Netflix top show: Stranger Things finale", "Culture", "Polymarket", 0.71, 1.1, 410_000, 224, 66, 60),
+  m("cul-5", "Beyoncé wins Album of the Year at Grammys", "Culture", "Polymarket", 0.34, -1.2, 220_000, 225, 51, 250),
+  m("cul-6", "GTA VI ships before Q4 2026", "Culture", "Polymarket", 0.43, 3.1, 1_180_000, 226, 74, 200),
+  m("cul-7", "Dune: Part Three confirmed by year-end", "Culture", "Polymarket", 0.58, 0.6, 190_000, 227, 57, 240),
+  m("cul-8", "Wes Anderson next film at Cannes 2026", "Culture", "Polymarket", 0.36, 0.4, 140_000, 228, 48, 60),
+];
+
+export const REGULATION: HomeMarket[] = [
+  m("reg-1", "EU AI Act enforcement begins before EOY", "Regulation", "Polymarket", 0.66, 2.2, 1_840_000, 241, 79, 240),
+  m("reg-2", "SEC issues final crypto custody rule in 2026", "Regulation", "Polymarket", 0.41, -1.1, 920_000, 242, 64, 200),
+  m("reg-3", "US stablecoin bill signed into law", "Regulation", "Kalshi", 0.62, 3.3, 1_980_000, 243, 81, 90),
+  m("reg-4", "TikTok divestment or US ban enforced", "Regulation", "Polymarket", 0.38, -0.9, 1_120_000, 244, 67, 180),
+  m("reg-5", "DOJ wins Google search antitrust remedy", "Regulation", "Polymarket", 0.54, 1.6, 740_000, 245, 72, 220),
+  m("reg-6", "CFTC formally regulates prediction markets", "Regulation", "Kalshi", 0.47, 0.8, 510_000, 246, 69, 240),
+  m("reg-7", "Apple App Store EU fine exceeds €1B", "Regulation", "Polymarket", 0.31, -0.4, 380_000, 247, 55, 240),
+  m("reg-8", "FTC blocks a major tech merger in 2026", "Regulation", "Polymarket", 0.44, 1.2, 290_000, 248, 60, 240),
+];
+
 export const ALL_MARKETS: HomeMarket[] = [
-  ...POLITICS, ...GEOPOLITICS, ...CRYPTO, ...ECONOMY, ...TECH, ...SPORTS,
+  ...POLITICS, ...GEOPOLITICS, ...CRYPTO, ...ECONOMY, ...TECH, ...SPORTS, ...CULTURE, ...REGULATION,
 ];
 
 export const MARKETS_BY_CATEGORY: Record<HomeCategory, HomeMarket[]> = {
@@ -142,6 +166,8 @@ export const MARKETS_BY_CATEGORY: Record<HomeCategory, HomeMarket[]> = {
   Economy: ECONOMY,
   Tech: TECH,
   Sports: SPORTS,
+  Culture: CULTURE,
+  Regulation: REGULATION,
 };
 
 /* ---------- Top-of-page aggregates ---------- */

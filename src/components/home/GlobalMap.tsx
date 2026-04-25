@@ -1,6 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { REGIONS, TOP_REGIONS } from "@/data/fixtures/countries";
+import { CONTINENT_PATHS } from "@/data/fixtures/world-paths";
 
 const TIER_FILL: Record<1 | 2 | 3 | 4, string> = {
   1: "hsl(213, 30%, 22%)",
@@ -23,8 +24,9 @@ const LEGEND = [
 ];
 
 /**
- * Stylized SVG world silhouette. Inline path data — broad continent
- * blobs, financial blue heatmap. Hotspots are clickable per region.
+ * Stylized but recognizable world map. Inline SVG continent silhouettes
+ * (rough geographic shapes) with a blue choropleth on key regions and
+ * hover hotspots for cities/markets. Side panel summarizes top regions.
  */
 export function GlobalMap() {
   const [hover, setHover] = useState<typeof REGIONS[number] | null>(null);
@@ -51,37 +53,30 @@ export function GlobalMap() {
             role="img"
             aria-label="World prediction volume map"
           >
-            {/* Subtle grid */}
             <defs>
               <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="hsl(var(--border))" strokeOpacity="0.4" strokeWidth="0.5" />
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="hsl(var(--border))" strokeOpacity="0.35" strokeWidth="0.5" />
               </pattern>
+              <radialGradient id="oceanGlow" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stopColor="hsl(213, 30%, 8%)" />
+                <stop offset="100%" stopColor="hsl(240, 8%, 6%)" />
+              </radialGradient>
             </defs>
+
+            {/* Ocean / background */}
+            <rect width="1000" height="500" fill="url(#oceanGlow)" />
             <rect width="1000" height="500" fill="url(#grid)" />
 
-            {/* Stylized continent silhouettes. Coordinates are deliberate
-               approximations — reads as "world" without being a real map. */}
-            <g fill="hsl(var(--surface-3))" stroke="hsl(var(--border))" strokeWidth="0.5">
-              {/* North America */}
-              <path d="M120 110 Q160 80 230 90 L300 110 L320 160 L290 220 L240 270 L180 280 L130 240 L100 180 Z" />
-              {/* Central + South America */}
-              <path d="M260 280 L310 290 L340 340 L355 410 L315 460 L280 460 L255 400 L240 340 Z" />
-              {/* Europe */}
-              <path d="M460 130 L550 130 L570 180 L520 215 L470 200 L455 165 Z" />
-              {/* Africa */}
-              <path d="M490 230 L590 240 L605 320 L560 410 L510 410 L480 340 Z" />
-              {/* Russia / N. Asia */}
-              <path d="M560 90 L820 95 L850 150 L780 175 L660 170 L580 145 Z" />
-              {/* Middle East */}
-              <path d="M580 200 L660 210 L660 260 L590 260 Z" />
-              {/* India */}
-              <path d="M680 230 L735 235 L725 295 L690 295 Z" />
-              {/* China + SE Asia */}
-              <path d="M720 175 L820 180 L835 250 L795 280 L745 265 L725 215 Z" />
-              {/* Japan */}
-              <path d="M850 200 L870 205 L865 235 L848 235 Z" />
-              {/* Australia */}
-              <path d="M790 370 L870 365 L890 410 L830 425 L795 410 Z" />
+            {/* Continent silhouettes — recognizable rough geography */}
+            <g
+              fill="hsl(213, 35%, 18%)"
+              stroke="hsl(213, 40%, 28%)"
+              strokeWidth="0.6"
+              strokeLinejoin="round"
+            >
+              {CONTINENT_PATHS.map((d, i) => (
+                <path key={i} d={d} />
+              ))}
             </g>
 
             {/* Region heatmap dots (sized by tier) */}
