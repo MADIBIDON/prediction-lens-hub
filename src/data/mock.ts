@@ -449,6 +449,13 @@ export function fmtPct(n: number, signed = false): string {
   return n > 0 ? `+${s}` : s;
 }
 
+/**
+ * Probability as 0.XX (TradingView-style decimal). e.g. 42 → "0.42".
+ */
+export function fmtProb(n: number): string {
+  return (n / 100).toFixed(2);
+}
+
 export function fmtDate(iso: string): string {
   const d = new Date(iso);
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
