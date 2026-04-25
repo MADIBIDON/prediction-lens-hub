@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import { MARKETS, fmtMoney, fmtDate } from "@/data/mock";
+import { MARKETS, fmtMoney, fmtDate, fmtProb } from "@/data/mock";
 import { CategoryChip, PlatformChip } from "./CategoryChip";
 import { Delta } from "./Delta";
 import { OracleScore } from "./OracleScore";

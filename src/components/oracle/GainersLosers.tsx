@@ -1,4 +1,4 @@
-import { MARKETS, fmtMoney } from "@/data/mock";
+import { MARKETS, fmtMoney, fmtProb } from "@/data/mock";
 import { CategoryChip, PlatformChip } from "./CategoryChip";
 import { Delta } from "./Delta";
 import { SectionHeader } from "./SectionHeader";

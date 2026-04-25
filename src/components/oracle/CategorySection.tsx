@@ -1,4 +1,4 @@
-import { byCategory, type Category, NEWS, fmtMoney, fmtDate, getMarket, CALENDAR } from "@/data/mock";
+import { byCategory, type Category, NEWS, fmtMoney, fmtDate, fmtProb, getMarket, CALENDAR } from "@/data/mock";
 import { CategoryChip, PlatformChip } from "./CategoryChip";
 import { Sparkline } from "./Sparkline";
 import { Delta } from "./Delta";

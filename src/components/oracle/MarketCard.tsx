@@ -1,5 +1,5 @@
 import type { Market } from "@/data/mock";
-import { fmtMoney, fmtDate } from "@/data/mock";
+import { fmtMoney, fmtDate, fmtProb } from "@/data/mock";
 import { CategoryChip, PlatformChip } from "./CategoryChip";
 import { Sparkline } from "./Sparkline";
 import { Delta } from "./Delta";

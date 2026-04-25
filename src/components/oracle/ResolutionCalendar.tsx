@@ -1,4 +1,4 @@
-import { CALENDAR, fmtDate, fmtMoney, getMarket } from "@/data/mock";
+import { CALENDAR, fmtDate, fmtMoney, fmtProb, getMarket } from "@/data/mock";
 import { CategoryChip } from "./CategoryChip";
 import { SectionHeader } from "./SectionHeader";
 

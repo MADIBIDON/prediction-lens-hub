@@ -1,4 +1,4 @@
-import { CATEGORIES, MARKETS, daysUntil, fmtMoney } from "@/data/mock";
+import { CATEGORIES, MARKETS, daysUntil, fmtMoney, fmtProb } from "@/data/mock";
 import { CategoryChip, PlatformChip } from "./CategoryChip";
 import { OracleScore } from "./OracleScore";
 import { SectionHeader } from "./SectionHeader";
