@@ -1,7 +1,14 @@
 import { ChevronRight } from "lucide-react";
 import { OVERVIEW, fmtProb } from "@/data/fixtures/markets";
+import { FIXTURE_MARKETS, getMostActive, getResolvingSoon } from "@/lib/market-data";
 import { Sparkline } from "./Sparkline";
 import { Delta } from "./Delta";
+
+function daysUntil(iso: string): number {
+  const now = Date.now();
+  const target = new Date(iso).getTime();
+  return Math.max(0, Math.ceil((target - now) / 86_400_000));
+}
 
 export function OverviewCards() {
   return (
@@ -17,8 +24,8 @@ export function OverviewCards() {
             spark={<Sparkline data={OVERVIEW.active.spark} width={280} height={56} tone="positive" strokeWidth={1.5} />}
             footer="View all markets"
           >
-            {OVERVIEW.active.rows.map((r) => (
-              <Row key={r.title} title={r.title} prob={fmtProb(r.prob)} change={r.change} />
+            {getMostActive(FIXTURE_MARKETS, 3).map((m) => (
+              <Row key={m.id} title={m.shortTitle} prob={fmtProb(m.probability)} change={m.probabilityChange24h} />
             ))}
           </Card>
 
@@ -31,15 +38,15 @@ export function OverviewCards() {
             spark={<Sparkline data={OVERVIEW.resolving.spark} width={280} height={56} tone="info" strokeWidth={1.5} />}
             footer="View calendar"
           >
-            {OVERVIEW.resolving.rows.map((r) => (
+            {getResolvingSoon(FIXTURE_MARKETS, 45, 3).map((m) => (
               <li
-                key={r.title}
+                key={m.id}
                 className="flex items-center justify-between border-b border-border py-2 last:border-0"
               >
-                <span className="line-clamp-1 text-[13px] text-foreground">{r.title}</span>
+                <span className="line-clamp-1 text-[13px] text-foreground">{m.shortTitle}</span>
                 <div className="flex items-center gap-3 font-mono text-[13px] tabular-nums">
-                  <span className="text-muted-foreground">{r.days}d</span>
-                  <span className="font-medium text-foreground">{fmtProb(r.prob)}</span>
+                  <span className="text-muted-foreground">{daysUntil(m.closeDate)}d</span>
+                  <span className="font-medium text-foreground">{fmtProb(m.probability)}</span>
                 </div>
               </li>
             ))}
@@ -54,20 +61,24 @@ export function OverviewCards() {
             spark={<Sparkline data={OVERVIEW.signal.spark} width={280} height={56} tone="positive" strokeWidth={1.5} />}
             footer="How Oracle Score works"
           >
-            {OVERVIEW.signal.rows.map((r) => (
-              <li
-                key={r.title}
-                className="flex items-center justify-between border-b border-border py-2 last:border-0"
-              >
-                <span className="line-clamp-1 text-[13px] text-foreground">{r.title}</span>
-                <div className="flex items-center gap-2 font-mono text-[13px] tabular-nums">
-                  <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[11px] text-foreground">
-                    {r.score}
-                  </span>
-                  <span className="font-medium text-foreground">{fmtProb(r.prob)}</span>
-                </div>
-              </li>
-            ))}
+            {[...FIXTURE_MARKETS]
+              .filter((m) => m.oracleScore != null)
+              .sort((a, b) => (b.oracleScore ?? 0) - (a.oracleScore ?? 0))
+              .slice(0, 3)
+              .map((m) => (
+                <li
+                  key={m.id}
+                  className="flex items-center justify-between border-b border-border py-2 last:border-0"
+                >
+                  <span className="line-clamp-1 text-[13px] text-foreground">{m.shortTitle}</span>
+                  <div className="flex items-center gap-2 font-mono text-[13px] tabular-nums">
+                    <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[11px] text-foreground">
+                      {m.oracleScore}
+                    </span>
+                    <span className="font-medium text-foreground">{fmtProb(m.probability)}</span>
+                  </div>
+                </li>
+              ))}
           </Card>
         </div>
       </div>
