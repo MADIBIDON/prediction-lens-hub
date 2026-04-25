@@ -46,7 +46,7 @@ export const CategorySection = ({ category, description }: CategorySectionProps)
                 key={m.id}
                 title={m.title}
                 left={<PlatformChip platform={m.platform} />}
-                right={<span className="mono text-sm font-semibold">{m.probability}%</span>}
+                right={<span className="mono text-sm font-semibold">{fmtProb(m.probability)}</span>}
               />
             ))}
           </Tile>

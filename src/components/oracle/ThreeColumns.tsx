@@ -30,7 +30,7 @@ export const ThreeColumns = () => {
               chips: <PlatformChip platform={m.platform} />,
               right: (
                 <div className="text-right">
-                  <div className="mono text-sm font-semibold">{m.probability}%</div>
+                  <div className="mono text-sm font-semibold">{fmtProb(m.probability)}</div>
                   <div className="mono text-[11px] text-subtle">{fmtMoney(m.volume24h)}</div>
                 </div>
               ),
@@ -47,7 +47,7 @@ export const ThreeColumns = () => {
                 chips: <CategoryChip category={m.category} />,
                 right: (
                   <div className="text-right">
-                    <div className="mono text-sm font-semibold">{m.probability}%</div>
+                    <div className="mono text-sm font-semibold">{fmtProb(m.probability)}</div>
                     <div className="mono text-[11px] text-subtle">{d}d</div>
                   </div>
                 ),
@@ -63,7 +63,7 @@ export const ThreeColumns = () => {
               chips: <CategoryChip category={m.category} />,
               right: (
                 <div className="flex flex-col items-end gap-1">
-                  <div className="mono text-sm font-semibold">{m.probability}%</div>
+                  <div className="mono text-sm font-semibold">{fmtProb(m.probability)}</div>
                   <OracleScore score={m.oracleScore} />
                 </div>
               ),

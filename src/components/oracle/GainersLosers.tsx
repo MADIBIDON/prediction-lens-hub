@@ -54,7 +54,7 @@ const Panel = ({
               <span className="mono text-[10px] text-subtle">{fmtMoney(m.volume24h)}</span>
             </div>
           </div>
-          <div className="mono text-right text-sm font-semibold">{m.probability}%</div>
+          <div className="mono text-right text-sm font-semibold">{fmtProb(m.probability)}</div>
           <Delta value={m.change24h} />
         </div>
       ))}

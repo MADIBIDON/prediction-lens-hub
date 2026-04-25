@@ -21,7 +21,7 @@ export const MarketCard = ({ market: m }: MarketCardProps) => {
       </h3>
       <div className="mt-3 flex items-end justify-between">
         <div>
-          <div className="mono text-2xl font-semibold tracking-tight">{m.probability}%</div>
+          <div className="mono text-2xl font-semibold tracking-tight">{fmtProb(m.probability)}</div>
           <Delta value={m.change24h} size="sm" />
         </div>
         <Sparkline

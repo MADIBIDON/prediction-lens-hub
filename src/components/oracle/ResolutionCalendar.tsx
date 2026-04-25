@@ -30,7 +30,7 @@ export const ResolutionCalendar = () => (
                   return (
                     <div key={id} className="flex items-baseline justify-between gap-2 rounded-md bg-[hsl(var(--surface-2))] px-2 py-1.5">
                       <div className="line-clamp-1 text-[12px] text-muted-foreground">{m.title}</div>
-                      <div className="mono text-[12px] font-semibold text-foreground">{m.probability}%</div>
+                      <div className="mono text-[12px] font-semibold text-foreground">{fmtProb(m.probability)}</div>
                     </div>
                   );
                 })}

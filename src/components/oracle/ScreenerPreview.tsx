@@ -66,7 +66,7 @@ export const ScreenerPreview = () => {
                         <PlatformChip platform={m.platform} />
                       </div>
                     </td>
-                    <td className="mono px-3 py-2.5 text-right text-[13px] font-semibold">{m.probability}%</td>
+                    <td className="mono px-3 py-2.5 text-right text-[13px] font-semibold">{fmtProb(m.probability)}</td>
                     <td className="px-3 py-2.5 text-right">
                       <Delta value={m.change24h} size="sm" />
                     </td>
