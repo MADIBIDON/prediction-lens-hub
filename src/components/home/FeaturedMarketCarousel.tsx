@@ -14,6 +14,29 @@ function daysUntil(iso: string): number {
   return Math.max(0, Math.ceil((target - now) / 86_400_000));
 }
 
+function visualToneClass(
+  type: OracleMarket["visualFallback"]["type"]
+): string {
+  switch (type) {
+    case "country-flag":
+    case "flag-pair":
+      return "bg-blue-950/30 border-blue-900/30";
+    case "crypto-logo":
+      return "bg-yellow-950/30 border-yellow-900/30";
+    case "person":
+      return "bg-surface-2 border-border";
+    case "team-logo":
+      return "bg-emerald-950/25 border-emerald-900/30";
+    case "company-logo":
+      return "bg-violet-950/25 border-violet-900/30";
+    case "category-icon":
+    case "generated-symbol":
+    case "image":
+    default:
+      return "bg-surface-2 border-border";
+  }
+}
+
 export function FeaturedMarketCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -44,6 +67,12 @@ export function FeaturedMarketCarousel() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(4px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
       <div className="mx-auto max-w-[1440px] px-6 py-10 lg:px-12">
         <div className="mb-5 flex items-center justify-between">
           <h2 className="font-display text-[22px] font-semibold tracking-tight text-foreground">
@@ -67,7 +96,7 @@ export function FeaturedMarketCarousel() {
           </div>
         </div>
 
-        <Slide market={market} />
+        <Slide key={activeIndex} market={market} />
 
         {/* Dot indicators */}
         <div className="mt-4 flex items-center justify-center gap-1.5">
@@ -94,12 +123,18 @@ function Slide({ market: m }: { market: OracleMarket }) {
   const sparkData = m.chartData.map((p) => p.probability);
   const topNews = m.relatedNews[0] ?? null;
   const days = daysUntil(m.closeDate);
+  const toneClass = visualToneClass(m.visualFallback.type);
 
   return (
-    <article className="flex flex-col gap-6 rounded-lg border border-border bg-surface-1 p-6 lg:flex-row">
+    <article
+      className="flex flex-col gap-6 rounded-lg border border-border bg-surface-1 p-6 lg:flex-row"
+      style={{ animation: "fadeIn 0.25s ease-out" }}
+    >
       {/* LEFT — visual */}
       <div className="flex shrink-0 flex-col gap-3 lg:w-[272px]">
-        <div className="flex h-[180px] w-full items-center justify-center rounded-lg bg-surface-2 text-[64px]">
+        <div
+          className={`flex h-[180px] w-full flex-col items-center justify-center rounded-lg border text-[72px] ${toneClass}`}
+        >
           {m.imageUrl ? (
             <img
               src={m.imageUrl}
@@ -107,9 +142,14 @@ function Slide({ market: m }: { market: OracleMarket }) {
               className="h-full w-full rounded-lg object-cover"
             />
           ) : (
-            <span role="img" aria-label={m.visualFallback.alt}>
-              {m.visualFallback.emojiFallback ?? "📊"}
-            </span>
+            <>
+              <span role="img" aria-label={m.visualFallback.alt}>
+                {m.visualFallback.emojiFallback ?? "📊"}
+              </span>
+              <p className="mt-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                {m.region}
+              </p>
+            </>
           )}
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -145,9 +185,9 @@ function Slide({ market: m }: { market: OracleMarket }) {
           <Sparkline
             data={sparkData}
             width={280}
-            height={56}
+            height={72}
             tone={tone}
-            strokeWidth={1.5}
+            strokeWidth={2}
           />
         </div>
 
