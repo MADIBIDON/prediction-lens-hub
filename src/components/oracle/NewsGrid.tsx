@@ -12,7 +12,7 @@ export const NewsGrid = () => (
         description="Catalysts that moved prediction markets in the last few hours, with the resulting probability shift."
         link={{ label: "Open the news feed", href: "/news" }}
       />
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {NEWS.map((n) => {
           const m = getMarket(n.relatedMarketId);
           return (
