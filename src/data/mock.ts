@@ -267,6 +267,37 @@ export const MARKETS: Market[] = [
     oracleScore: 67,
     spark: spark(17, 58),
   },
+  // ---- Politics expansion ----
+  { id: "uk-snap-election", title: "UK snap election called before Q4", category: "Politics", platform: "Polymarket", probability: 19, change24h: -1.6, volume24h: 880_000, liquidity: 1_700_000, closeDate: "2026-10-31", oracleScore: 53, spark: spark(31, 19) },
+  { id: "biden-2028-run", title: "Biden runs for office again by 2028", category: "Politics", platform: "Manifold", probability: 8, change24h: -0.5, volume24h: 140_000, liquidity: 320_000, closeDate: "2027-12-31", oracleScore: 38, spark: spark(32, 8) },
+  { id: "germany-coalition", title: "Germany forms new coalition before July", category: "Politics", platform: "Polymarket", probability: 54, change24h: 2.7, volume24h: 620_000, liquidity: 1_350_000, closeDate: "2026-07-01", oracleScore: 59, spark: spark(33, 54) },
+  { id: "speaker-replaced", title: "US House Speaker replaced before EOY", category: "Politics", platform: "Kalshi", probability: 26, change24h: 3.4, volume24h: 1_120_000, liquidity: 2_100_000, closeDate: "2026-12-31", oracleScore: 61, spark: spark(34, 26) },
+  // ---- Geopolitics expansion ----
+  { id: "taiwan-incident", title: "Taiwan strait incident before EOY 2026", category: "Geopolitics", platform: "Polymarket", probability: 31, change24h: 4.8, volume24h: 2_640_000, liquidity: 4_800_000, closeDate: "2026-12-31", oracleScore: 70, spark: spark(35, 31) },
+  { id: "russia-ceasefire-q3", title: "Russia–Ukraine ceasefire by Q3 2026", category: "Geopolitics", platform: "Kalshi", probability: 18, change24h: -2.1, volume24h: 1_540_000, liquidity: 3_100_000, closeDate: "2026-09-30", oracleScore: 64, spark: spark(36, 18) },
+  { id: "iran-israel-90d", title: "Iran–Israel ceasefire holds 90 days", category: "Geopolitics", platform: "Polymarket", probability: 41, change24h: 1.6, volume24h: 1_980_000, liquidity: 3_700_000, closeDate: "2026-08-15", oracleScore: 62, spark: spark(37, 41) },
+  { id: "nato-new-member", title: "NATO admits new member before EOY", category: "Geopolitics", platform: "Polymarket", probability: 14, change24h: -0.7, volume24h: 320_000, liquidity: 760_000, closeDate: "2026-12-31", oracleScore: 46, spark: spark(38, 14) },
+  // ---- Crypto expansion ----
+  { id: "btc-200k-eoy", title: "BTC > $200K by EOY 2026", category: "Crypto", platform: "Polymarket", probability: 17, change24h: 2.9, volume24h: 5_200_000, liquidity: 9_400_000, closeDate: "2026-12-31", oracleScore: 73, spark: spark(39, 17, 7) },
+  { id: "eth-etf-5b-q2", title: "ETH ETF inflows > $5B in Q2", category: "Crypto", platform: "Kalshi", probability: 23, change24h: 1.7, volume24h: 1_640_000, liquidity: 3_100_000, closeDate: "2026-06-30", oracleScore: 65, spark: spark(40, 23) },
+  { id: "sec-coinbase", title: "SEC drops Coinbase case in 2026", category: "Crypto", platform: "Polymarket", probability: 47, change24h: 5.8, volume24h: 2_280_000, liquidity: 4_400_000, closeDate: "2026-12-31", oracleScore: 76, spark: spark(41, 47) },
+  { id: "sol-flip-eth", title: "Solana flips Ethereum mcap by 2027", category: "Crypto", platform: "Polymarket", probability: 9, change24h: -1.3, volume24h: 980_000, liquidity: 2_100_000, closeDate: "2027-12-31", oracleScore: 51, spark: spark(42, 9) },
+  // ---- Economy expansion ----
+  { id: "cpi-q3-4", title: "US CPI > 4% in Q3 2026", category: "Economy", platform: "Kalshi", probability: 19, change24h: 1.4, volume24h: 1_320_000, liquidity: 2_600_000, closeDate: "2026-10-31", oracleScore: 67, spark: spark(43, 19) },
+  { id: "unemp-5-eoy", title: "US unemployment > 5% by EOY", category: "Economy", platform: "Kalshi", probability: 27, change24h: 2.6, volume24h: 1_840_000, liquidity: 3_400_000, closeDate: "2026-12-31", oracleScore: 70, spark: spark(44, 27) },
+  { id: "ecb-pause", title: "ECB pauses cuts before September", category: "Economy", platform: "Kalshi", probability: 52, change24h: -1.9, volume24h: 920_000, liquidity: 1_900_000, closeDate: "2026-09-30", oracleScore: 58, spark: spark(45, 52) },
+  // ---- Tech expansion ----
+  { id: "gpt6-sep", title: "GPT-6 released before September", category: "Tech", platform: "Manifold", probability: 22, change24h: 3.1, volume24h: 380_000, liquidity: 820_000, closeDate: "2026-09-01", oracleScore: 60, spark: spark(46, 22) },
+  { id: "openai-500b", title: "OpenAI valuation > $500B by EOY", category: "Tech", platform: "Polymarket", probability: 64, change24h: 4.4, volume24h: 1_120_000, liquidity: 2_300_000, closeDate: "2026-12-31", oracleScore: 71, spark: spark(47, 64) },
+  { id: "apple-ar-glasses", title: "Apple ships AR glasses in 2026", category: "Tech", platform: "Polymarket", probability: 12, change24h: -2.4, volume24h: 540_000, liquidity: 1_100_000, closeDate: "2026-12-31", oracleScore: 49, spark: spark(48, 12) },
+  { id: "tesla-robotaxi", title: "Tesla Robotaxi rollout in 5+ US cities", category: "Tech", platform: "Polymarket", probability: 34, change24h: -3.6, volume24h: 760_000, liquidity: 1_500_000, closeDate: "2026-12-31", oracleScore: 57, spark: spark(49, 34) },
+  // ---- Sports expansion ----
+  { id: "real-madrid-ucl", title: "Real Madrid wins Champions League 2026", category: "Sports", platform: "Polymarket", probability: 28, change24h: 2.2, volume24h: 1_240_000, liquidity: 2_400_000, closeDate: "2026-06-01", oracleScore: 56, spark: spark(50, 28) },
+  { id: "lakers-playoffs", title: "Lakers make the playoffs", category: "Sports", platform: "Kalshi", probability: 71, change24h: 3.8, volume24h: 480_000, liquidity: 980_000, closeDate: "2026-04-30", oracleScore: 52, spark: spark(51, 71) },
+  { id: "verstappen-f1", title: "Verstappen wins F1 2026 championship", category: "Sports", platform: "Polymarket", probability: 46, change24h: -1.1, volume24h: 620_000, liquidity: 1_300_000, closeDate: "2026-11-30", oracleScore: 54, spark: spark(52, 46) },
+  { id: "warriors-finals", title: "Warriors reach NBA Finals", category: "Sports", platform: "Kalshi", probability: 22, change24h: -2.7, volume24h: 410_000, liquidity: 880_000, closeDate: "2026-06-15", oracleScore: 48, spark: spark(53, 22) },
+  // ---- Culture ----
+  { id: "a24-bp", title: "A24 film wins Best Picture next ceremony", category: "Culture", platform: "Manifold", probability: 28, change24h: -2.1, volume24h: 220_000, liquidity: 410_000, closeDate: "2027-03-15", oracleScore: 44, spark: spark(54, 28) },
 ];
 
 export const CATEGORIES: { id: Category | "All"; label: string }[] = [
