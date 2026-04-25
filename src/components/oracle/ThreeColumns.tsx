@@ -1,4 +1,4 @@
-import { CATEGORIES, MARKETS, daysUntil, fmtMoney } from "@/data/mock";
+import { CATEGORIES, MARKETS, daysUntil, fmtMoney, fmtProb } from "@/data/mock";
 import { CategoryChip, PlatformChip } from "./CategoryChip";
 import { OracleScore } from "./OracleScore";
 import { SectionHeader } from "./SectionHeader";
@@ -14,7 +14,7 @@ export const ThreeColumns = () => {
 
   return (
     <section className="border-b border-border">
-      <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-6 md:py-16">
+      <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-6 md:py-16 lg:px-16 lg:py-20">
         <SectionHeader
           eyebrow="Market overview"
           title="What's moving across prediction markets"
@@ -30,7 +30,7 @@ export const ThreeColumns = () => {
               chips: <PlatformChip platform={m.platform} />,
               right: (
                 <div className="text-right">
-                  <div className="mono text-sm font-semibold">{m.probability}%</div>
+                  <div className="mono text-sm font-semibold">{fmtProb(m.probability)}</div>
                   <div className="mono text-[11px] text-subtle">{fmtMoney(m.volume24h)}</div>
                 </div>
               ),
@@ -47,7 +47,7 @@ export const ThreeColumns = () => {
                 chips: <CategoryChip category={m.category} />,
                 right: (
                   <div className="text-right">
-                    <div className="mono text-sm font-semibold">{m.probability}%</div>
+                    <div className="mono text-sm font-semibold">{fmtProb(m.probability)}</div>
                     <div className="mono text-[11px] text-subtle">{d}d</div>
                   </div>
                 ),
@@ -63,7 +63,7 @@ export const ThreeColumns = () => {
               chips: <CategoryChip category={m.category} />,
               right: (
                 <div className="flex flex-col items-end gap-1">
-                  <div className="mono text-sm font-semibold">{m.probability}%</div>
+                  <div className="mono text-sm font-semibold">{fmtProb(m.probability)}</div>
                   <OracleScore score={m.oracleScore} />
                 </div>
               ),

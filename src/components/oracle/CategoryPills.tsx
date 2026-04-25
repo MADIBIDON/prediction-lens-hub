@@ -27,8 +27,8 @@ export const CategoryPills = () => {
   };
 
   return (
-    <div className="sticky top-14 z-40 border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="mx-auto max-w-[1400px] px-4 md:px-6">
+    <div className="sticky top-16 z-40 border-b border-border bg-background/90 backdrop-blur-md">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-6 lg:px-16">
         <div className="flex items-center gap-1 overflow-x-auto py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {CATEGORY_PILLS.map((p) => {
             const isActive = active === p.id;
@@ -38,8 +38,8 @@ export const CategoryPills = () => {
                 onClick={() => onClick(p.targetId)}
                 className={`shrink-0 rounded-md px-3 py-1.5 text-[12px] font-medium transition-colors ${
                   isActive
-                    ? "bg-[hsl(var(--surface-3))] text-foreground"
-                    : "text-muted-foreground hover:bg-[hsl(var(--surface-2))] hover:text-foreground"
+                    ? "bg-[hsl(var(--surface-2))] text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {p.label}

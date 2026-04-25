@@ -17,7 +17,7 @@ export const Logo = ({ size = 24, showWordmark = true, className = "" }: LogoPro
       draggable={false}
     />
     {showWordmark && (
-      <span className="font-display text-[17px] font-semibold tracking-tight text-foreground lowercase">
+      <span className="font-display text-[17px] font-medium tracking-tight text-foreground lowercase">
         oracle
       </span>
     )}

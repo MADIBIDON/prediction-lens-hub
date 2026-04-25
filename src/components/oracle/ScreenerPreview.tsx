@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import { MARKETS, fmtMoney, fmtDate } from "@/data/mock";
+import { MARKETS, fmtMoney, fmtDate, fmtProb } from "@/data/mock";
 import { CategoryChip, PlatformChip } from "./CategoryChip";
 import { Delta } from "./Delta";
 import { OracleScore } from "./OracleScore";
@@ -22,7 +22,7 @@ export const ScreenerPreview = () => {
   const rows = [...MARKETS].sort((a, b) => b.oracleScore - a.oracleScore).slice(0, 8);
   return (
     <section className="border-b border-border">
-      <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-6 md:py-16">
+      <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-6 md:py-16 lg:px-16 lg:py-20">
         <SectionHeader
           eyebrow="Prediction market screener"
           title="A full screener for prediction markets"
@@ -66,7 +66,7 @@ export const ScreenerPreview = () => {
                         <PlatformChip platform={m.platform} />
                       </div>
                     </td>
-                    <td className="mono px-3 py-2.5 text-right text-[13px] font-semibold">{m.probability}%</td>
+                    <td className="mono px-3 py-2.5 text-right text-[13px] font-semibold">{fmtProb(m.probability)}</td>
                     <td className="px-3 py-2.5 text-right">
                       <Delta value={m.change24h} size="sm" />
                     </td>

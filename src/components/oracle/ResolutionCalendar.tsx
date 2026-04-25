@@ -1,10 +1,10 @@
-import { CALENDAR, fmtDate, fmtMoney, getMarket } from "@/data/mock";
+import { CALENDAR, fmtDate, fmtMoney, fmtProb, getMarket } from "@/data/mock";
 import { CategoryChip } from "./CategoryChip";
 import { SectionHeader } from "./SectionHeader";
 
 export const ResolutionCalendar = () => (
   <section className="border-b border-border">
-    <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-6 md:py-16">
+    <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-6 md:py-16 lg:px-16 lg:py-20">
       <SectionHeader
         eyebrow="Resolution calendar"
         title="When markets will move and resolve"
@@ -30,7 +30,7 @@ export const ResolutionCalendar = () => (
                   return (
                     <div key={id} className="flex items-baseline justify-between gap-2 rounded-md bg-[hsl(var(--surface-2))] px-2 py-1.5">
                       <div className="line-clamp-1 text-[12px] text-muted-foreground">{m.title}</div>
-                      <div className="mono text-[12px] font-semibold text-foreground">{m.probability}%</div>
+                      <div className="mono text-[12px] font-semibold text-foreground">{fmtProb(m.probability)}</div>
                     </div>
                   );
                 })}

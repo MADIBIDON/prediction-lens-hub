@@ -5,14 +5,14 @@ import { SectionHeader } from "./SectionHeader";
 
 export const NewsGrid = () => (
   <section className="border-b border-border">
-    <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-6 md:py-16">
+    <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-6 md:py-16 lg:px-16 lg:py-20">
       <SectionHeader
         eyebrow="News driving markets"
         title="Every story linked to a probability move"
         description="Catalysts that moved prediction markets in the last few hours, with the resulting probability shift."
         link={{ label: "Open the news feed", href: "/news" }}
       />
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {NEWS.map((n) => {
           const m = getMarket(n.relatedMarketId);
           return (

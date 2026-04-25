@@ -1,4 +1,4 @@
-import { MARKETS, fmtMoney } from "@/data/mock";
+import { MARKETS, fmtMoney, fmtProb } from "@/data/mock";
 import { CategoryChip, PlatformChip } from "./CategoryChip";
 import { Delta } from "./Delta";
 import { SectionHeader } from "./SectionHeader";
@@ -8,7 +8,7 @@ export const GainersLosers = () => {
   const down = [...MARKETS].filter((m) => m.change24h < 0).sort((a, b) => a.change24h - b.change24h).slice(0, 6);
   return (
     <section className="border-b border-border">
-      <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-6 md:py-16">
+      <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-6 md:py-16 lg:px-16 lg:py-20">
         <SectionHeader
           eyebrow="Probability movement"
           title="Markets moving up and down"
@@ -54,7 +54,7 @@ const Panel = ({
               <span className="mono text-[10px] text-subtle">{fmtMoney(m.volume24h)}</span>
             </div>
           </div>
-          <div className="mono text-right text-sm font-semibold">{m.probability}%</div>
+          <div className="mono text-right text-sm font-semibold">{fmtProb(m.probability)}</div>
           <Delta value={m.change24h} />
         </div>
       ))}

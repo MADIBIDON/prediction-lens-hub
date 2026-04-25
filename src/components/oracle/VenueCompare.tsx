@@ -1,9 +1,9 @@
-import { VENUES, fmtMoney } from "@/data/mock";
+import { VENUES, fmtMoney, fmtProb } from "@/data/mock";
 import { SectionHeader } from "./SectionHeader";
 
 export const VenueCompare = () => (
   <section className="border-b border-border">
-    <div className="mx-auto max-w-[1400px] px-4 py-12 md:px-6 md:py-16">
+    <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-6 md:py-16 lg:px-16 lg:py-20">
       <SectionHeader
         eyebrow="Polymarket vs Kalshi"
         title="Compare venues before you trade"
@@ -33,10 +33,10 @@ export const VenueCompare = () => (
                   <tr key={v.marketId} className="transition-colors hover:bg-[hsl(var(--surface-2))]">
                     <td className="px-4 py-3 text-[13px] font-medium text-foreground">{v.title}</td>
                     <td className={`mono px-3 py-3 text-right text-[13px] ${polyBetter ? "text-foreground" : "text-muted-foreground"}`}>
-                      {v.polyProb}%
+                      {fmtProb(v.polyProb)}
                     </td>
                     <td className={`mono px-3 py-3 text-right text-[13px] ${!polyBetter ? "text-foreground" : "text-muted-foreground"}`}>
-                      {v.kalshiProb}%
+                      {fmtProb(v.kalshiProb)}
                     </td>
                     <td className="mono px-3 py-3 text-right text-[12px] text-muted-foreground">{fmtMoney(v.polyVol)}</td>
                     <td className="mono px-3 py-3 text-right text-[12px] text-muted-foreground">{fmtMoney(v.kalshiVol)}</td>
