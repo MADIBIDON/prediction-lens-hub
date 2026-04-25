@@ -1,4 +1,4 @@
-import { ChevronRight, Landmark, Globe2, Bitcoin, TrendingUp, Cpu, Trophy, MessageSquare, Rocket } from "lucide-react";
+import { ChevronRight, Landmark, Globe2, Bitcoin, TrendingUp, Cpu, Trophy, Sparkles, Scale, MessageSquare, Rocket } from "lucide-react";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import {
   CATEGORY_ANCHORS,
@@ -24,6 +24,8 @@ const CATEGORY_ICON: Record<HomeCategory, typeof Landmark> = {
   Economy: TrendingUp,
   Tech: Cpu,
   Sports: Trophy,
+  Culture: Sparkles,
+  Regulation: Scale,
 };
 
 interface Props {

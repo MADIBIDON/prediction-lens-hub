@@ -24,6 +24,8 @@ const Index = () => (
       <CategorySection category="Economy" />
       <CategorySection category="Tech" />
       <CategorySection category="Sports" />
+      <CategorySection category="Culture" />
+      <CategorySection category="Regulation" />
       <ResolutionCalendar />
       <GlobalMap />
       <VenueComparison />
