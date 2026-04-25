@@ -16,6 +16,8 @@ import {
 import { newsByCategory } from "@/data/fixtures/news";
 import { Sparkline } from "./Sparkline";
 import { Delta } from "./Delta";
+import { EconomyStrip } from "./EconomyStrip";
+import { TechStrip } from "./TechStrip";
 
 const CATEGORY_ICON: Record<HomeCategory, typeof Landmark> = {
   Politics: Landmark,
@@ -82,6 +84,10 @@ export function CategorySection({ category }: Props) {
             ))}
           </div>
         </SubSection>
+
+        {/* Category-specific differentiator strip */}
+        {category === "Economy" && <EconomyStrip />}
+        {category === "Tech" && <TechStrip />}
 
         {/* SUB C — Most active + Most volatile */}
         <div className="mt-10 grid grid-cols-12 gap-6">
