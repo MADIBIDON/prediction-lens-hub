@@ -1,5 +1,6 @@
 import { TopNav } from "@/components/home/TopNav";
 import { MarketsHero } from "@/components/home/MarketsHero";
+import { FeaturedMarketCarousel } from "@/components/home/FeaturedMarketCarousel";
 import { OverviewCards } from "@/components/home/OverviewCards";
 import { CategoryPillBar } from "@/components/home/CategoryPillBar";
 import { CategorySection } from "@/components/home/CategorySection";
@@ -15,6 +16,7 @@ const Index = () => (
   <div className="min-h-screen bg-background text-foreground">
     <TopNav />
     <MarketsHero />
+    <FeaturedMarketCarousel />
     <OverviewCards />
     <CategoryPillBar />
     <main>
