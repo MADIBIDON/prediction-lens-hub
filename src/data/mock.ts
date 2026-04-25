@@ -379,6 +379,13 @@ export const NEWS: NewsItem[] = [
   { id: "n7", source: "Bloomberg", ago: "5 h ago", headline: "Brazil central bank minutes hint at hawkish turn", relatedMarketId: "brazil-rate-hike", probabilityChange: 2.4 },
   { id: "n8", source: "Politico", ago: "6 h ago", headline: "House panel schedules hearing on stablecoin oversight", relatedMarketId: "court-crypto-reg", probabilityChange: 6.2 },
   { id: "n9", source: "The Information", ago: "7 h ago", headline: "OpenAI internal memo references GPT-5 evals", relatedMarketId: "gpt5-dec", probabilityChange: 3.6 },
+  { id: "n10", source: "Reuters", ago: "8 h ago", headline: "Iran signals openness to extended ceasefire framework", relatedMarketId: "iran-israel-90d", probabilityChange: 1.6 },
+  { id: "n11", source: "CoinDesk", ago: "9 h ago", headline: "SEC filings hint at imminent resolution in Coinbase case", relatedMarketId: "sec-coinbase", probabilityChange: 5.8 },
+  { id: "n12", source: "The Economist", ago: "10 h ago", headline: "Tesla pushes Robotaxi launch into late 2026", relatedMarketId: "tesla-robotaxi", probabilityChange: -3.6 },
+  { id: "n13", source: "Bloomberg", ago: "12 h ago", headline: "BLS preview points to softer payrolls report next week", relatedMarketId: "unemp-5-eoy", probabilityChange: 2.6 },
+  { id: "n14", source: "FT", ago: "14 h ago", headline: "ECB hawks resist further rate cuts, minutes show", relatedMarketId: "ecb-pause", probabilityChange: -1.9 },
+  { id: "n15", source: "AP", ago: "16 h ago", headline: "China steps up Taiwan strait drills, US carrier repositioned", relatedMarketId: "taiwan-incident", probabilityChange: 4.8 },
+  { id: "n16", source: "Politico", ago: "18 h ago", headline: "House moderates float vote to oust Speaker", relatedMarketId: "speaker-replaced", probabilityChange: 3.4 },
 ];
 
 export interface VenueRow {
@@ -456,8 +463,8 @@ export const COMPOSITE = {
 
 export type Timeframe = keyof typeof COMPOSITE;
 
-export const COMPOSITE_NOW = 1242.4;
-export const COMPOSITE_DELTA_24H = 1.34; // %
+export const COMPOSITE_NOW = 0.541;
+export const COMPOSITE_DELTA_24H = -0.84; // %
 
 export const STATS = {
   totalActiveMarkets: 6483,
@@ -466,6 +473,28 @@ export const STATS = {
   mostLiquidId: "btc-120k-eoy",
   liveActivity: spark(99, 62, 5),
 };
+
+/**
+ * Aggregate per-category state for the hero "Top Categories" panel.
+ * Probability is a synthetic mean across the category's markets.
+ * 24h change is a synthetic blended movement.
+ */
+export interface CategoryAggregate {
+  category: Category;
+  prob: number;
+  change24h: number;
+  spark: number[];
+}
+
+export const TOP_CATEGORIES: CategoryAggregate[] = [
+  { category: "Politics",    prob: 38, change24h:  1.2, spark: spark(60, 38) },
+  { category: "Geopolitics", prob: 27, change24h: -1.8, spark: spark(61, 27) },
+  { category: "Crypto",      prob: 41, change24h:  3.4, spark: spark(62, 41, 7) },
+  { category: "Economy",     prob: 33, change24h: -0.9, spark: spark(63, 33) },
+  { category: "Tech",        prob: 49, change24h:  2.1, spark: spark(64, 49) },
+  { category: "Sports",      prob: 46, change24h:  0.7, spark: spark(65, 46) },
+  { category: "Culture",     prob: 31, change24h: -0.4, spark: spark(66, 31) },
+];
 
 export function fmtMoney(n: number): string {
   if (n >= 1_000_000_000) return `$${(n / 1_000_000_000).toFixed(2)}B`;
