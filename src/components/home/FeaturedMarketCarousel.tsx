@@ -14,26 +14,42 @@ function daysUntil(iso: string): number {
   return Math.max(0, Math.ceil((target - now) / 86_400_000));
 }
 
-function visualToneClass(
-  type: OracleMarket["visualFallback"]["type"]
-): string {
+function visualToneClass(type: OracleMarket["visualFallback"]["type"]): string {
   switch (type) {
     case "country-flag":
     case "flag-pair":
-      return "bg-blue-950/30 border-blue-900/30";
+      return "bg-blue-950/40 border-blue-900/40";
     case "crypto-logo":
-      return "bg-yellow-950/30 border-yellow-900/30";
+      return "bg-yellow-950/40 border-yellow-900/40";
     case "person":
-      return "bg-surface-2 border-border";
+      return "bg-slate-900/60 border-slate-700/40";
     case "team-logo":
-      return "bg-emerald-950/25 border-emerald-900/30";
+      return "bg-emerald-950/40 border-emerald-900/40";
     case "company-logo":
-      return "bg-violet-950/25 border-violet-900/30";
+      return "bg-violet-950/40 border-violet-900/40";
     case "category-icon":
     case "generated-symbol":
     case "image":
     default:
       return "bg-surface-2 border-border";
+  }
+}
+
+function visualAccentColor(type: OracleMarket["visualFallback"]["type"]): string {
+  switch (type) {
+    case "country-flag":
+    case "flag-pair":
+      return "rgba(59,130,246,0.08)";
+    case "crypto-logo":
+      return "rgba(234,179,8,0.08)";
+    case "person":
+      return "rgba(148,163,184,0.06)";
+    case "team-logo":
+      return "rgba(16,185,129,0.08)";
+    case "company-logo":
+      return "rgba(139,92,246,0.08)";
+    default:
+      return "transparent";
   }
 }
 
@@ -74,11 +90,17 @@ export function FeaturedMarketCarousel() {
         }
       `}</style>
       <div className="mx-auto max-w-[1440px] px-6 py-10 lg:px-12">
-        <div className="mb-5 flex items-center justify-between">
-          <h2 className="font-display text-[22px] font-semibold tracking-tight text-foreground">
-            Featured markets
-          </h2>
-          <div className="flex items-center gap-2">
+        {/* Header */}
+        <div className="mb-6 flex items-start justify-between gap-4">
+          <div>
+            <h2 className="font-display text-[22px] font-semibold tracking-tight text-foreground">
+              Featured markets
+            </h2>
+            <p className="mt-1 max-w-[520px] text-[13px] text-muted-foreground">
+              High-signal markets ranked by volume, liquidity, movement and news pressure.
+            </p>
+          </div>
+          <div className="flex shrink-0 items-center gap-2 pt-1">
             <button
               onClick={prev}
               className="flex h-8 w-8 items-center justify-center rounded border border-border bg-surface-1 text-muted-foreground transition-colors hover:border-hover hover:text-foreground"
@@ -124,98 +146,107 @@ function Slide({ market: m }: { market: OracleMarket }) {
   const topNews = m.relatedNews[0] ?? null;
   const days = daysUntil(m.closeDate);
   const toneClass = visualToneClass(m.visualFallback.type);
+  const accentColor = visualAccentColor(m.visualFallback.type);
 
   return (
     <article
-      className="flex flex-col gap-6 rounded-lg border border-border bg-surface-1 p-6 lg:flex-row"
+      className="flex flex-col gap-0 overflow-hidden rounded-lg border border-border bg-surface-1 lg:flex-row"
       style={{ animation: "fadeIn 0.25s ease-out" }}
     >
-      {/* LEFT — visual */}
-      <div className="flex shrink-0 flex-col gap-3 lg:w-[272px]">
-        <div
-          className={`flex h-[180px] w-full flex-col items-center justify-center rounded-lg border text-[72px] ${toneClass}`}
-        >
-          {m.imageUrl ? (
-            <img
-              src={m.imageUrl}
-              alt={m.visualFallback.alt}
-              className="h-full w-full rounded-lg object-cover"
-            />
-          ) : (
-            <>
-              <span role="img" aria-label={m.visualFallback.alt}>
-                {m.visualFallback.emojiFallback ?? "📊"}
-              </span>
-              <p className="mt-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                {m.region}
-              </p>
-            </>
-          )}
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          <span className="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-            {m.category}
+      {/* LEFT — visual poster */}
+      <div
+        className={`relative flex shrink-0 flex-col items-center justify-center border-b border-border p-6 lg:w-[272px] lg:border-b-0 lg:border-r ${toneClass}`}
+        style={{
+          background: `radial-gradient(ellipse at 50% 40%, ${accentColor} 0%, transparent 70%)`,
+        }}
+      >
+        <div className="flex flex-col items-center gap-2 text-center">
+          <span
+            role="img"
+            aria-label={m.visualFallback.alt}
+            className="select-none text-[80px] leading-none"
+          >
+            {m.visualFallback.emojiFallback ?? "📊"}
           </span>
-          <span className="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+          <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+            {m.region}
+          </p>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
+            {m.category}
+          </p>
+        </div>
+
+        {/* Badges pinned to bottom */}
+        <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-1.5">
+          <span className="rounded bg-black/20 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur-sm">
             {m.platform}
           </span>
           {m.oracleScore != null && (
-            <span className="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-foreground">
+            <span className="rounded bg-black/20 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-foreground backdrop-blur-sm">
               OS {m.oracleScore}
             </span>
           )}
         </div>
+
+        {/* Image override */}
+        {m.imageUrl && (
+          <img
+            src={m.imageUrl}
+            alt={m.visualFallback.alt}
+            className="absolute inset-0 h-full w-full rounded-l-lg object-cover"
+          />
+        )}
       </div>
 
       {/* CENTER — market data */}
-      <div className="flex min-w-0 flex-1 flex-col justify-between gap-4">
+      <div className="flex min-w-0 flex-1 flex-col gap-5 p-6">
+        {/* Title + probability */}
         <div>
           <h2 className="font-display text-[20px] font-semibold leading-snug text-foreground lg:text-[22px]">
             {m.title}
           </h2>
           <div className="mt-3 flex items-baseline gap-3">
-            <span className="font-mono text-[32px] font-bold leading-none text-foreground">
+            <span className="font-mono text-[36px] font-bold leading-none text-foreground">
               {fmtProb(m.probability)}
             </span>
-            <Delta value={m.probabilityChange24h} className="text-[14px]" />
+            <Delta value={m.probabilityChange24h} className="text-[15px]" />
           </div>
         </div>
 
-        <div className="-mx-1">
+        {/* Chart */}
+        <div className="w-full">
           <Sparkline
             data={sparkData}
-            width={280}
-            height={72}
+            width={420}
+            height={96}
             tone={tone}
-            strokeWidth={2}
+            strokeWidth={2.5}
           />
         </div>
 
-        <div className="flex items-center gap-5 font-mono text-[12px] text-muted-foreground">
-          <span>
-            Closes in{" "}
-            <span className="text-foreground">{days}d</span>
-          </span>
-          <span>
-            Vol{" "}
-            <span className="text-foreground">{fmtVol(m.volume24h)}</span>
-          </span>
+        {/* Stat blocks */}
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+          <StatBlock label="Probability" value={fmtProb(m.probability)} />
+          <StatBlock
+            label="24h Move"
+            value={`${m.probabilityChange24h >= 0 ? "+" : ""}${m.probabilityChange24h.toFixed(1)}pp`}
+            valueClass={m.probabilityChange24h >= 0 ? "text-positive" : "text-negative"}
+          />
+          <StatBlock label="Volume" value={fmtVol(m.volume24h)} />
           {m.liquidity > 0 && (
-            <span>
-              Liq{" "}
-              <span className="text-foreground">{fmtVol(m.liquidity)}</span>
-            </span>
+            <StatBlock label="Liquidity" value={fmtVol(m.liquidity)} />
           )}
+          <StatBlock label="Closes" value={`${days}d`} />
         </div>
       </div>
 
-      {/* RIGHT — related news */}
-      <div className="flex shrink-0 flex-col justify-between gap-3 rounded-lg border border-border bg-surface-2 p-4 lg:w-[220px]">
+      {/* RIGHT — news panel */}
+      <div className="flex shrink-0 flex-col gap-4 border-t border-border bg-surface-2/50 p-5 lg:w-[228px] lg:border-l lg:border-t-0">
         <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-          Related news
+          Market-moving news
         </p>
         {topNews ? (
-          <div className="flex flex-1 flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <p className="font-mono text-[10px] text-muted-foreground">
               {topNews.source}
             </p>
@@ -224,12 +255,11 @@ function Slide({ market: m }: { market: OracleMarket }) {
             </p>
             {topNews.probabilityImpact !== 0 && (
               <span
-                className={`font-mono text-[12px] ${
-                  topNews.probabilityImpact >= 0
-                    ? "text-positive"
-                    : "text-negative"
+                className={`mt-1 inline-flex items-center font-mono text-[11px] font-semibold ${
+                  topNews.probabilityImpact >= 0 ? "text-positive" : "text-negative"
                 }`}
               >
+                Impact&nbsp;
                 {topNews.probabilityImpact >= 0 ? "+" : ""}
                 {topNews.probabilityImpact.toFixed(1)}pp
               </span>
@@ -240,5 +270,26 @@ function Slide({ market: m }: { market: OracleMarket }) {
         )}
       </div>
     </article>
+  );
+}
+
+function StatBlock({
+  label,
+  value,
+  valueClass = "text-foreground",
+}: {
+  label: string;
+  value: string;
+  valueClass?: string;
+}) {
+  return (
+    <div className="flex flex-col gap-1 rounded bg-surface-2 px-3 py-2">
+      <span className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">
+        {label}
+      </span>
+      <span className={`font-mono text-[13px] font-semibold tabular-nums ${valueClass}`}>
+        {value}
+      </span>
+    </div>
   );
 }
